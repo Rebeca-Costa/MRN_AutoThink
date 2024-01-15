@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.navigation-bar{
+    width: 100%;
+    height: 90px;
+    background: #183257;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+.logo{
+    width: 180px;
+    float: left;
+}
+.logo img{
+    width: 200px;
+    margin-top: 10px;
+}
+.search-area{
+    width: 600px;
+    height: 70px;
+    float: left;
+    margin-left: 200px; 
+}
+.search_box{
+    width: 500px;
+    padding: 10px;
+    margin-top: 20px;
+    float: left;
+    border-radius: 25px;
+    border: 1px solid white;
+}
+.search_btn{
+    float: left;
+    margin-top: 20px;
+    padding: 12px 10px;
+    border-radius: 25px;
+    width: 50px;
+    margin-left: -50px;
+    height: 45px;
+}
+.user-menu{
+    width: 250px;
+    height: 60px;
+    float: right;
+    margin-top: 10px;
+}
+.user-menu ul{
+    float: right;
+}
+.user-menu ul li{
+    list-style: none;
+    float: left;
+    height: 70px;
+    line-height: 70px;
+    width: 100px;
+    text-align: center;
+}
+.user-menu ul li a{
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+.user-menu button{
+    color: white !important;
+    height: 40px;
+    line-height: 30px;
+    background: #183257;
+}
+
+/* Carrossel de slides */
+.bx-wrapper .bx-controls-auto, .bx-wrapper .bx-pager{
+    bottom: 30px !important;
+}
+.slider-area img{
+    width: 100%;
+    height: 500px;
+    padding: 1%;
+}
+.slider-content{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 700px;
+    text-align: center;
+}
+.slider-name{
+    font-weight: bolder;
+    color: #1050AB;
+    font-size: 50px;
+    text-decoration: none;
+}
+.slider-description{
+    font-weight: bold;
+    color: #6A6767;
+    font-size: 20px;
+    text-decoration: none;
+}
+.slider-price{
+    font-weight: bolder;
+    color: #F01515;
+    font-size: 60px;
+    text-decoration: none;
+}
+.bx-wrapper .bx-next{
+    right: 40px;
+}
+.bx-wrapper .bx-prev{
+    left: 40px;
+}
+
+
+/* Categorias */
+.category-menu{
+    background-color: #E5E5E5 !important;
+    width: 100%;
+    height: 90px;
+    margin-top: 90px;
+    text-align: center;
+}
+.categorie-classes a{
+    font-weight: 500;
+    font-size: 30px;
+    text-decoration: none !important;
+    color: black;
+    line-height: 90px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+

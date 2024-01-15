@@ -1,0 +1,840 @@
+Códigos para salvar a sua saúde mental :D
+
+.Cadastro
+
+<?php
+include 'conexao.php';
+if(isset($_POST['sub'])){ //se houve uma ação no botao, ele vai cair nessa estrutura, que cada um vai receber a info
+    $usuario = $_POST['usuario'];
+    $senha = $_POST['senha'];
+    $cidade = $_POST['cidade'];
+    $celular = $_POST['celular'];
+    $email = $_POST['email'];
+
+    if($_FILES['f1']['name']){
+        move_uploaded_file($_FILES['f1']['tmp_name'],"imagem/".$_FILES['f1']['name']);
+        $img = "imagem/".$_FILES['f1']['name'];
+    }
+
+    $select = "select * from cadastro where usuario='$usuario'"; //verificando se a info do usuario está correta
+    $q = mysqli_query($con, $select); //executar o comando de fazer a buscar
+
+    if(mysqli_num_rows($q)>0){ //se a busca que eu fizer, for maior que 0, ele vai verificar se existe pelo menos uma linha que contém um usuario e uma senha, ele salva a info na $f
+        echo "Usuário já existe";
+    }else{
+        $i = "insert into cadastro(usuario, senha, cidade, celular, email)value('$usuario','$senha','$cidade','$celular','$email')";
+        mysqli_query($con, $i);  
+        echo "Usuário inserido com sucesso!";
+    }
+}
+?>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="icon" href="images/AT.png">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+
+  <style>
+        .button-container {
+            background: linear-gradient(to bottom, #183257, #ffffff); /* Fundo com gradiente linear */
+            width: 35%; /* Largura de 35% da página */
+            height: 100vh; /* Altura da página inteira */
+            float: left; /* Alinha à esquerda */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .div2 {
+            width: 65%; /* Largura de 65% da página */
+            height: 100vh; /* Altura da página inteira */
+            float: left; /* Alinha à esquerda */
+            display: flex;
+            flex-direction: column;
+            position: relative; /* Garante que a div interna seja posicionada em relação a esta div */
+            min-height: 100vh; /* Ocupa pelo menos toda a altura da viewport (área visível da página) */
+            justify-content: center;
+           
+        }
+        .socialmedia-container{
+            background: linear-gradient(to bottom, #747474, #ffffff); /* Fundo com gradiente linear */
+            width: 65%; 
+            height: 13%; /* Altura da página inteira */
+            float: right; /* Alinha à esquerda */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+           /* position: absolute; /* Posiciona a div interna de forma absoluta dentro da div externa */
+            bottom: 0;
+            font-size: 25px;
+            color: #6A6767;        
+        }
+        .button {
+        display: block; /* Faz os botões ocuparem uma linha inteira */
+        width: 230px;
+        height: 70px; 
+        text-align: center; /* Centraliza o texto horizontalmente */
+        line-height: 65px; /* Centraliza o texto verticalmente */
+        margin: 10px auto; /* Centraliza os botões na vertical */
+        font-weight: bold;
+        font-size: 35px;
+        text-decoration: none;  
+        border-radius: 25px;
+        background-color: transparent; /* Fundo transparente para o segundo botão */
+        color: #ffffff; /* Texto em cor branca */
+        border: none; /* Remove a borda do segundo botão */
+        }
+        /* Estilo do segundo botão */
+        .button.button-secondary {
+            background-color: #ffffff;
+            color: #1050AB; 
+        }
+        /*Formulario*/
+        .formulario{
+            padding: 25%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="button-container">
+        <a href="login.php" class="button">Login</a>
+        <a href="cadastro.php" class="button button-secondary">Cadastro</a>
+    </div>
+    <div class="div2">
+        <div class="formulario">
+                    <div class="form-group mb-4">
+                    <label class="sr-only">Usuário</label>
+                    <input type="text" name="usuario" class="form-control" placeholder="Usuário">
+                  </div>
+                  <div class="form-group mb-4">
+                    <label class="sr-only">Senha</label>
+                    <input type="password" name="senha" class="form-control" placeholder="Senha">
+                  </div>
+                  <div class="form-group mb-4">
+                    <p>Cidade</p>
+                    <label class="sr-only">Cidade</label>
+                    <select name="cidade">
+                            <option value="">-Selecionar-</option>
+                            <option value="Hortolândia">Hortolândia</option>
+                            <option value="Campinas">Campinas</option>
+                            <option value="Limeira">Limeira</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-4">
+                    <label class="sr-only">Celular</label>
+                    <input type="tel" name="senha" class="form-control" placeholder="Celular">
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label class="sr-only">Email</label>
+                    <input type="text" name="email" class="form-control" placeholder="Email">
+                  </div>
+
+                  <input type="submit" name="sub" id="login" class="btn btn-block login-btn mb-4" value="Cadastrar">
+                  <a href='login.php'><input type="button" class="btn btn-block login-btn mb-4" value="Login"></a>
+                </form>
+                <a href="#!" class="forgot-password-link"></a>
+                <p class="login-card-footer-text"><a href="#!" class="text-reset"></a></p>            
+            </div>
+    </div>
+
+        <div class="socialmedia-container">
+            <p>Ou login com <a href="#" style="text-decoration: none; color: #6A6767; margin-left: 100px;"><i class="fa-brands fa-google" style="color: #1977f3;"></i> Google</a>
+            <a href="#" style="text-decoration: none; color: #6A6767;"><i class="fa-brands fa-facebook" style="color: #1977f3;"></i> Facebook</a></p>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/9781bdb3cd.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+.Conexão
+
+<?php
+    session_start();
+    $con = mysqli_connect("localhost","root","","teste");
+?>
+
+.Dashboard
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+  <title> Dashboard </title>
+        <link rel="icon" href="images/AT.png">
+        <link href="css/jquery.bxslider.min.css" rel="stylesheet">
+        <link href="css/owl.carousel.min.css" rel="stylesheet">
+        <link href="css/owl.theme.default.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/media.css">
+        
+        <link defer href="style.css" rel="stylesheet" type="text/css">
+
+       
+  </head>
+  <body>
+    <!--Menu-->
+    <div class="wrapper">
+            <div class="navigation-bar">
+            <div class="container">
+
+                <!-- Logo AutoThink -->
+                <div class="logo">
+                    <img src="images/logo-fundo.png" alt="logo">
+                </div>
+
+                <!-- Menu -->
+            <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" style="font-weight: bolder; margin-top: 15px; margin-left: 200px;" href="#">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                </button>
+                <a class="navbar-brand text-white" style="font-weight: bolder; margin-top: 15px;" href="#unidad">Nossas Unidades</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                </button>
+                <a class="navbar-brand text-white" style="font-weight: bolder; margin-top: 15px;" href="#sobre">Sobre</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                </button>
+                <a class="navbar-brand text-white" style="font-weight: bolder; margin-top: 15px;" href="index.php">Produtos</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                </button>
+                <!-- Botão Cadastre-se -->
+                <form class="d-flex">
+                <button class="btn btn-outline-light" style="font-weight: bolder; margin-top: 15px;" type="button">Cadastrar-se</button>
+                </form>
+            </nav>
+            </div>           
+        </div>  <!-- Fim do Menu -->
+    </div>
+    <!--Carrossel de imagens -->
+        <!-- slides -->
+        <div class="slider-area" style="margin-top: 90px;">
+            <div class="slider">
+                <div>
+                    <a href="#"><img src="images/slider/pneu-slider.png"></a>
+                    <div class="slider-content">
+                        <a href="#" class="slider-name">KIT PAR PNEU MAGGION SPORTISSIMO</a></br>
+                        <a href="#" class="slider-description">100-80-17 52S TL+140-70-17 66H TL Yamaha YS 250 Fazer ABS 2018 a 2024</a></br>
+                        <a href="#" class="slider-price">R$ 572,30</a><a href="#" class="slider-description"> à vista</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="#"><img src="images/slider/pastilha-slider.png"></a>
+                    <div class="slider-content">
+                        <a href="#" class="slider-name">KIT PASTILHA</a></br>
+                        <a href="#" class="slider-description">Kit Pastilha Sapata Freio Fiat Palio Hatch 96 a 2012 Frasle</a></br>
+                        <a href="#" class="slider-price">R$ 89,42</a><a href="#" class="slider-description"> à vista</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="#"><img src="images/slider/amoretecedor-slider.png"></a>
+                    <div class="slider-content">
+                        <a href="#" class="slider-name">KIT 2 AMORTECEDOR NAKATA</a></br>
+                        <a href="#" class="slider-description">2 Amortecedor Fiat Uno Mille 88 a 2013 Dianteiro Nakata</a></br>
+                        <a href="#" class="slider-price">R$ 298,68</a><a href="#" class="slider-description"> à vista</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <!-- Fim do carrossel -->
+
+          <!-- Texto rodutos mais Vendidos -->
+          <div class="container-fluid">
+            <section class="product-section" style="width: 100%; padding: 50px 55px; margin: 15px 0;">
+                <div class="section-heading" style="width: 100%; height: 40px; margin-bottom: 50px;">
+                    <h3 class="heading" style="color: #183257; font-size: 40px;"><strong>Mais Vendidos</strong></h3>
+                </div><!-- Fim de texto produtos mais vendidos -->
+
+                <!-- imagens e info dos produtos mais vendidos -->
+                <div class="section-product-cards" style="width:100%; margin-top: 30px; text-align: center;">
+                    <div class="product-card" style="width: 360px; height: 470px; box-shadow: 0px 2px 10px rgba(0,0,0,0.3); position: relative; overflow: Hidden; margin: 10px 20px; border-radius: 15px; display: inline-block;">
+                        <!-- Imagem do produto -->
+                        <div class="product-image" style="text-align: center; margin: 25px">
+                            <img src="images/products/protetor.png" alt="" width="200px" height="200px">
+                        </div>
+                        <!-- Descrição do produto -->
+                        <div class="product-details" style="padding: 0 20px 0 20px; text-align: center;">
+                            <h5 class="product-name">Protetor de Motor YBR Factor Frances - Pro Tork</h5>
+                            <p class="product-price text-danger" style="font-size: 40px;"><strong>R$ 44,00 </strong></p>
+                        </div>
+                        <!-- botão "comprar" -->
+                        <div class="card-contents" style="">
+                            <button type="button" class="btn" style="background-color: #FDEC52; text-align: center; width: 100%">
+                                <p style="font-size: 40px; color: #183257; "><strong>Comprar</strong></p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" style="width: 360px; height: 470px; box-shadow: 0px 2px 10px rgba(0,0,0,0.3); position: relative; overflow: Hidden; margin: 10px 20px; border-radius: 15px; display: inline-block;">
+                        <!-- Imagem do produto -->
+                        <div class="product-image" style="text-align: center; margin: 25px">
+                            <img src="images/products/capacete1.png" alt="" width="200px" height="200px">
+                        </div>
+                        <!-- Descrição do produto -->
+                        <div class="product-details" style="padding: 0 20px 0 20px; text-align: center;">
+                            <h5 class="product-name">Capacete Norisk Darth Monocolor Preto Fosco</h5>
+                            <p class="product-price text-danger" style="font-size: 40px;"><strong>R$ 649,90 </strong></p>
+                        </div>
+                        <!-- botão "comprar" -->
+                        <div class="card-contents" style="">
+                            <button type="button" class="btn" style="background-color: #FDEC52; text-align: center; width: 100%">
+                                <p style="font-size: 40px; color: #183257; "><strong>Comprar</strong></p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" style="width: 360px; height: 470px; box-shadow: 0px 2px 10px rgba(0,0,0,0.3); position: relative; overflow: Hidden; margin: 10px 20px; border-radius: 15px; display: inline-block;">
+                        <!-- Imagem do produto -->
+                        <div class="product-image" style="text-align: center; margin: 25px">
+                            <img src="images/products/jaqueta1.png" alt="" width="200px" height="200px">
+                        </div>
+                        <!-- Descrição do produto -->
+                        <div class="product-details" style="padding: 0 20px 0 20px; text-align: center;">
+                            <h5 class="product-name">Jaqueta Arizona Masculina Prime Preta</h5>
+                            <p class="product-price text-danger" style="font-size: 40px;"><strong>R$ 199,90 </strong></p>
+                        </div>
+                        <!-- botão "comprar" -->
+                        <div class="card-contents" style="">
+                            <button type="button" class="btn" style="background-color: #FDEC52; text-align: center; width: 100%">
+                                <p style="font-size: 40px; color: #183257; "><strong>Comprar</strong></p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Linha -->
+            <p style="width: 95%; height: 1; border: 1px solid #6A6767; margin: auto;"></p>
+
+            <!-- Nossas Unidades "texto"-->
+            <div class="container-fluid" id="unidad" style="scroll-margin-top: 5.5em;">
+            <section style="width: 100%; padding: 50px 55px; margin: 15px 0;">
+                <div class="section-heading"  style="width: 100%; height: 40px; margin-bottom: 100px; text-align: center;">
+                    <h3 class="heading"  style="color: #183257; font-size: 70px; "><strong>Nossas Unidades</strong></h3>
+                </div>
+                <!-- Fim de nossas unidades "texto"-->
+
+                <!-- Nossas Unidades "endereço" -->
+                <div class="section-location-cards" style="width:100%; margin-top: 30px; margin-left: 10px;">
+
+                <div class="location-card" style="width: 400px; height: 470px; box-shadow: 0px 2px 10px rgba(0,0,0,0.3); position: relative; overflow: Hidden; margin: 10px 20px; border-radius: 15px; display: inline-block;">
+                        <!-- Endereço -->
+                        <div class="location-details" style="padding: 20px; ">
+                            <h2 class="location-name"  style="color: #183257; margin-bottom: 30px; margin-top: 30px;text-align: center;"><strong>Loja Campinas Centro</strong></h2>
+                            <p style="font-size: 25px;">Rua xxxxxxxx - xxx </br>Telefone: 5110-6110, digite 21</p>
+                            <p style="font-size: 25px;">De Segunda a Sexta das 8h às 20h </br>Domingo das 7h às 14h</p>
+                        </div>
+                        <!-- botão "Ver no mapa" -->
+                        <div class="card-contents" style=" text-align: center; ">
+                            <button type="button" class="btn" style="background-color: #D9D9D9; height: 60px; width: 150px; border-radius: 20px;">
+                            <a href="https://goo.gl/maps/ugbBbirFHBYGPBy59" target="_blank" 
+                                style="font-size: 20px; color: black; text-decoration:none;"><strong>Ver no mapa</strong></a>
+                            </button>
+                        <!-- botão "Traçar rota" -->
+                            <button type="button" class="btn" style="background-color: #D9D9D9; height: 60px; width: 150px; border-radius: 20px;">
+                                <a href="http://maps.google.com/?saddr=Current%20Location&daddr=Av.Santana,1995-Parque Ortolândia,Hortolândia-SP,13184-210" target="_blank" 
+                                style="font-size: 20px; color: black; text-decoration:none;"><strong>Traçar rota</strong></a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="location-card" style="width: 400px; height: 470px; box-shadow: 0px 2px 10px rgba(0,0,0,0.3); position: relative; overflow: Hidden; margin: 10px 20px; border-radius: 15px; display: inline-block;">
+                        <!-- Endereço -->
+                        <div class="location-details" style="padding: 20px; ">
+                            <h2 class="location-name"  style="color: #183257; margin-bottom: 30px; margin-top: 30px;text-align: center;"><strong>Loja Hortolândia</strong></h2>
+                            <p style="font-size: 25px;">Rua xxxxxxxx - xxx </br>Telefone: 5110-6110, digite 21</p>
+                            <p style="font-size: 25px;">De Segunda a Sexta das 8h às 20h </br>Domingo das 7h às 14h</p>
+                        </div>
+                        <!-- botão "Ver no mapa" -->
+                        <div class="card-contents" style=" text-align: center; ">
+                            <button type="button" class="btn" style="background-color: #D9D9D9; height: 60px; width: 150px; border-radius: 20px;">
+                            <a href="https://goo.gl/maps/ugbBbirFHBYGPBy59" target="_blank" 
+                                style="font-size: 20px; color: black; text-decoration:none;"><strong>Ver no mapa</strong></a>
+                            </button>
+                        <!-- botão "Traçar rota" -->
+                            <button type="button" class="btn" style="background-color: #D9D9D9; height: 60px; width: 150px; border-radius: 20px;">
+                                <a href="http://maps.google.com/?saddr=Current%20Location&daddr=Av.Santana,1995-Parque Ortolândia,Hortolândia-SP,13184-210" target="_blank" 
+                                style="font-size: 20px; color: black; text-decoration:none;"><strong>Traçar rota</strong></a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="location-card" style="width: 400px; height: 470px; box-shadow: 0px 2px 10px rgba(0,0,0,0.3); position: relative; overflow: Hidden; margin: 10px 20px; border-radius: 15px; display: inline-block;">
+                        <!-- Endereço -->
+                        <div class="location-details" style="padding: 20px; ">
+                            <h2 class="location-name"  style="color: #183257; margin-bottom: 30px; margin-top: 30px;text-align: center;"><strong>Loja Limeira Centro</strong></h2>
+                            <p style="font-size: 25px;">Rua xxxxxxxx - xxx </br>Telefone: 5110-6110, digite 21</p>
+                            <p style="font-size: 25px;">De Segunda a Sexta das 8h às 20h </br>Domingo das 7h às 14h</p>
+                        </div>
+                        <!-- botão "Ver no mapa" -->
+                        <div class="card-contents" style=" text-align: center; ">
+                            <button type="button" class="btn" style="background-color: #D9D9D9; height: 60px; width: 150px; border-radius: 20px;">
+                            <a href="https://goo.gl/maps/ugbBbirFHBYGPBy59" target="_blank" 
+                                style="font-size: 20px; color: black; text-decoration:none;"><strong>Ver no mapa</strong></a>
+                            </button>
+                        <!-- botão "Traçar rota" -->
+                            <button type="button" class="btn" style="background-color: #D9D9D9; height: 60px; width: 150px; border-radius: 20px;">
+                                <a href="http://maps.google.com/?saddr=Current%20Location&daddr=Av.Santana,1995-Parque Ortolândia,Hortolândia-SP,13184-210" target="_blank" 
+                                style="font-size: 20px; color: black; text-decoration:none;"><strong>Traçar rota</strong></a>
+                            </button>
+                        </div>
+                    </div>
+
+            </section>
+            </div>
+             <!-- Linha -->
+             <p style="width: 95%; height: 1; border: 1px solid #6A6767; margin: auto;"></p>
+
+             <!-- Sobre nós "texto"-->
+            <div class="container-fluid" id="sobre" style="scroll-margin-top: 5.5em;">
+            <section style="width: 100%; padding: 50px 55px; margin: 15px 0;">
+                <div class="section-heading" style="width: 100%; height: 40px; margin-bottom: 100px; text-align: center;">
+                    <h3 class="heading" style="color: #183257; font-size: 70px; "><strong>Sobre Nós</strong></h3>
+                </div>
+                <!-- Fim de sobre nós "texto"-->
+
+                <!--Missão -->   
+            <div class="mission-card" style="width: 95%; height: 170px; box-shadow: 0px 2px 10px rgba(0,0,0,0.3); position: relative; overflow: hidden; margin: 10px 20px; border-radius: 15px; display: inline-block; background-color: #526B8E; text-align: right;">
+                <div style="align-items: center; background-color: #20406D; display: inline-block; width: 350px; height: 170px; border-radius: 15px;  margin-right: 15px;">
+                    <p style="font-size: 45px; color: #FED017; text-align: center; line-height: 170px; margin: 0;"><strong>Missão</strong></p>                       
+                </div> 
+                <div style="display: inline-block; width: calc(100% - 370px); height: 170px; overflow: auto; text-align: justify; vertical-align: middle;">
+                    <p style="font-size: 25px; color: white; padding: 15px; margin-right: 15px;"><strong>
+                        Fornecer aos nossos clientes as melhores soluções em autopeças e serviços automotivos, com qualidade, eficiência e atendimento excepcional, garantindo a satisfação e fidelidade dos mesmos.
+                    </srong></p>
+                </div>
+            </div>
+
+                <!--Visão -->
+            <div class="mission-card" style="width: 95%; height: 170px; box-shadow: 0px 2px 10px rgba(0,0,0,0.3); position: relative; overflow: hidden; margin: 10px 20px; border-radius: 15px; display: inline-block; background-color: #D4AF1B; text-align: right;">
+                <div style="align-items: center; background-color: #FED017; display: inline-block; width: 350px; height: 170px; border-radius: 15px;  margin-right: 15px;">
+                    <p style="font-size: 45px; color: #183257; text-align: center; line-height: 170px; margin: 0;"><strong>Visão</strong></p>                       
+                </div> 
+                <div style="display: inline-block; width: calc(100% - 370px); height: 170px; overflow: auto; text-align: justify; vertical-align: middle;">
+                    <p style="font-size: 25px; color: white; padding: 15px; margin-right: 15px;"><strong>
+                    Ser reconhecida como líder no mercado de autopeças, pela qualidade de nossos produtos e serviços, inovação, eficiência operacional e excelência no atendimento ao cliente.
+                    </srong></p>
+                </div>
+            </div>
+
+            <!-- Valores -->   
+            <div class="mission-card" style="width: 95%; height: 170px; box-shadow: 0px 2px 10px rgba(0,0,0,0.3); position: relative; overflow: hidden; margin: 10px 20px; border-radius: 15px; display: inline-block; background-color: #526B8E; text-align: right;">
+                <div style="align-items: center; background-color: #20406D; display: inline-block; width: 350px; height: 170px; border-radius: 15px;  margin-right: 15px;">
+                    <p style="font-size: 45px; color: #FED017; text-align: center; line-height: 170px; margin: 0;"><strong>Valores</strong></p>                       
+                </div> 
+                <div style="display: inline-block; width: calc(100% - 370px); height: 170px; overflow: auto; text-align: justify; vertical-align: middle;">
+                    <p style="font-size: 25px; color: white; padding: 15px; margin-right: 15px; margin-top: 35px;"><strong>
+                    Comprometimento. Respeito. Inovação. Excelência operacional. Responsabilidade.
+                    </srong></p>
+                </div>
+            </div>
+            </section>
+            </div> 
+
+            <!-- Rodapé -->
+
+            <footer>
+                <div id="unidad-area" style="background-color: #526B8E; width: 100%; text-align: center; ">
+                    <div class="container" >
+                        <div class="row" style="padding: 50px 0 50px 0;">
+                            <div class="col-md-4 unidad-box" >
+                                <h2 class="main-title text-light" style="line-height: 50px;">UNIDADE</h2>
+                                <a href="#unidad"><button type="button" class="dropdown-item text-white" style="font-weight: bold; font-size: 20px; line-height: 40px; text-decoration: none"><i class="fa-solid fa-shop" style="color: #fdec52;"></i> Unidades</button></a>
+                                <a href="MRN/index.html"><button type="button" class="dropdown-item text-white" style="font-weight: bold; font-size: 20px; line-height: 40px; text-decoration: none"><i class="fa-solid fa-circle-info" style="color: #fdec52;"></i> Sobre a empresa</button></a>
+                            </div>
+                            <div class="col-md-4 unidad-box">
+                                <img src="images/logo-fundo.png" alt="logo" width="200px" height="80px" style="margin-top: 25px;">
+                            </div>
+                            <div class="col-md-4 unidad-box">
+                            <h2 class="main-title text-light" style="line-height: 50px;">ENTRE EM CONTATO</h2>
+                                <a href="https://wa.me/19998607269" target="_blank"><button type="button" class="dropdown-item text-white" style="font-weight: bold; font-size: 20px; line-height: 40px; text-decoration: none"><i class="fa-brands fa-whatsapp" style="color: #fdec52;"></i> (19) 99860-7269</button></a>
+                                <a href="mailto:mrninfoservice@gmail.com"><button type="button" class="dropdown-item text-white" style="font-weight: bold; font-size: 20px; line-height: 40px; text-decoration: none"><i class="fa-solid fa-envelope" style="color: #fdec52;"></i> mrninfoservice@gmail.com</button></a>
+                            </div>
+                        </div>
+                    </div>
+            <!-- Linha -->
+            <p style="width: 95%; height: 1; border: 1px solid #D4AF1B; margin: auto;"></p>
+                        
+                <div class=" p-3 text-center" style="background-color: #526B8E; margin-top: 15px; color: white;">
+                <p>All rights reserved™ Created by<a href="MRN/index.html" style="color: white; text-decoration: none"> MRN </a>- 2023</p>
+            </div>
+
+
+                </div>
+            </footer>
+
+            
+            
+
+          </div> 
+    </div>
+        
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+    <script src="css\jquery.bxslider.min.css"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://kit.fontawesome.com/9781bdb3cd.js" crossorigin="anonymous"></script>
+
+  </body>
+</html>
+
+.Index
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> AutoThink - Produtos </title>
+        <link rel="icon" href="images/AT.png">
+        <link href="css/jquery.bxslider.min.css" rel="stylesheet">
+        <link href="css/owl.carousel.min.css" rel="stylesheet">
+        <link href="css/owl.theme.default.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="css/media.css">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    </head> 
+    <body>
+        <div class="wrapper">
+            <div class="navigation-bar">
+            <div class="container">
+
+                <!-- Logo AutoThink -->
+                <div class="logo">
+                    <img src="images/logo-fundo.png" alt="logo">
+                </div>
+
+                <!--Caixa de Pesquisa -->
+                <div class="search-area">
+                <form action="" method="post">
+                    <input type="text" name="search_box" class="search_box" placeholder="Pesquisar Produtos">
+                    <button class="search_btn btn btn-white"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+                </div>
+
+                <!-- Login/Cadastro e carrinho -->
+                <div class="user-menu">
+                    <ul>
+                    <li><a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-hoshpopup="true" aria-expanded="false"><i class="fa-solid fa-user"></i> Cadastro</a>
+                        <!-- Dropdown Menu -->
+                        <div class="dropdown-menu dropdown-menu-right" style="width: 200px; background: #183257;">
+                            <a href="#"><button type="button" class="dropdown-item text-white"><i class="fa-solid fa-user"></i> Sua Conta</button></a>
+                            <a href="#"><button type="button" class="dropdown-item text-white"><i class="fa-solid fa-basket-shopping"></i> Suas Compras</button></a>
+                            <a href="dashboard.php"><button type="button" class="dropdown-item text-white"><i class="fa-solid fa-table-columns"></i> Dashboard</button></a>
+                            
+                            <div class="divider">
+                                <hr style="color: white;">
+                                <p class="text-center text-white" style="height: 10px; line-height: 20px;"><small>Não tem uma conta?</small></p>
+                                <a href="cadastro.php"><button type="button" class="dropdown-item text-center text-white"><i class="fa-solid fa-user"></i> Cadastro</button></a>
+                                <a href="login.php"><button type="button" class="dropdown-item text-center bg-warning text-white" style="background: #D4AF1B;"><i class="fa-solid fa-user"></i> Login</button></a>
+                            </div>
+                        </div>
+                    </li>
+                        <li><a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrinho</a></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+
+            <!-- Menu de categorias NÃO SEI SE ESTA CERTO :D -->
+            <div class="category-menu">
+            <div class="container">
+                <div class="categorie-classes">
+                <a href="#">Acessórios</a>
+                <a href="#">Capacetes</a>
+                <a href="#">Jaquetas</a>
+                <a href="#">Moto Peças</a>
+                <a href="#">Pneus</a>
+                </div>
+            </div>
+            </div>
+
+            <!-- slides -->
+            <div class="slider-area">
+            <div class="slider">
+                <div>
+                    <a href="#"><img src="images/slider/pneu-slider.png"></a>
+                    <div class="slider-content">
+                        <a href="#" class="slider-name">KIT PAR PNEU MAGGION SPORTISSIMO</a></br>
+                        <a href="#" class="slider-description">100-80-17 52S TL+140-70-17 66H TL Yamaha YS 250 Fazer ABS 2018 a 2024</a></br>
+                        <a href="#" class="slider-price">R$ 572,30</a><a href="#" class="slider-description"> à vista</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="#"><img src="images/slider/pastilha-slider.png"></a>
+                    <div class="slider-content">
+                        <a href="#" class="slider-name">KIT PASTILHA</a></br>
+                        <a href="#" class="slider-description">Kit Pastilha Sapata Freio Fiat Palio Hatch 96 a 2012 Frasle</a></br>
+                        <a href="#" class="slider-price">R$ 89,42</a><a href="#" class="slider-description"> à vista</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="#"><img src="images/slider/amoretecedor-slider.png"></a>
+                    <div class="slider-content">
+                        <a href="#" class="slider-name">KIT 2 AMORTECEDOR NAKATA</a></br>
+                        <a href="#" class="slider-description">2 Amortecedor Fiat Uno Mille 88 a 2013 Dianteiro Nakata</a></br>
+                        <a href="#" class="slider-price">R$ 298,68</a><a href="#" class="slider-description"> à vista</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <h3 style="margin-left: 25px; font-size: 50px;" width="100%">Produtos</h3>
+
+        </div>
+
+    
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://kit.fontawesome.com/9781bdb3cd.js" crossorigin="anonymous"></script>
+
+    </body>
+</html>
+
+.Login
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="icon" href="images/AT.png">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+  <style>
+        .button-container {
+            background: linear-gradient(to bottom, #183257, #ffffff); /* Fundo com gradiente linear */
+            width: 35%; /* Largura de 35% da página */
+            height: 100vh; /* Altura da página inteira */
+            float: left; /* Alinha à esquerda */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .div2 {
+            width: 65%; /* Largura de 65% da página */
+            height: 100vh; /* Altura da página inteira */
+            float: left; /* Alinha à esquerda */
+            display: flex;
+            flex-direction: column;
+            position: relative; /* Garante que a div interna seja posicionada em relação a esta div */
+            min-height: 100vh; /* Ocupa pelo menos toda a altura da viewport (área visível da página) */
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .socialmedia-container{
+            background: linear-gradient(to bottom, #747474, #ffffff); /* Fundo com gradiente linear */
+            width: 100%; 
+            height: 13%; /* Altura da página inteira */
+            float: left; /* Alinha à esquerda */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute; /* Posiciona a div interna de forma absoluta dentro da div externa */
+            bottom: 0;
+            font-size: 25px;
+            color: #6A6767;        
+        }
+        .button {
+            display: block; /* Faz os botões ocuparem uma linha inteira */
+            width: 230px;
+            height: 70px; 
+            text-align: center; /* Centraliza o texto horizontalmente */
+            line-height: 65px; /* Centraliza o texto verticalmente */
+            margin: 10px auto; /* Centraliza os botões na vertical */
+            font-weight: bold;
+            font-size: 35px;
+            text-decoration: none;  
+            border-radius: 25px;
+            background-color: #ffffff;
+            color: #1050AB; 
+            border: none; /* Remove a borda do segundo botão */
+        }
+
+        /* Estilo do segundo botão */
+        .button.button-secondary {          
+            color: #ffffff; 
+            background-color: transparent;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="button-container">
+        <a href="login.php" class="button">Login</a>
+        <a href="cadastro.php" class="button button-secondary">Cadastro</a>
+    </div>
+    <div class="div2">
+        <div class="socialmedia-container">
+            <p>Ou login com <a href="#" style="text-decoration: none; color: #6A6767; margin-left: 100px;"><i class="fa-brands fa-google" style="color: #1977f3;"></i> Google</a>
+            <a href="#" style="text-decoration: none; color: #6A6767;"><i class="fa-brands fa-facebook" style="color: #1977f3;"></i> Facebook</a></p>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/9781bdb3cd.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+.Style - CSS
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.navigation-bar{
+    width: 100%;
+    height: 90px;
+    background: #183257;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+.logo{
+    width: 180px;
+    float: left;
+}
+.logo img{
+    width: 200px;
+    margin-top: 10px;
+}
+.search-area{
+    width: 600px;
+    height: 70px;
+    float: left;
+    margin-left: 200px; 
+}
+.search_box{
+    width: 500px;
+    padding: 10px;
+    margin-top: 20px;
+    float: left;
+    border-radius: 25px;
+    border: 1px solid white;
+}
+.search_btn{
+    float: left;
+    margin-top: 20px;
+    padding: 12px 10px;
+    border-radius: 25px;
+    width: 50px;
+    margin-left: -50px;
+    height: 45px;
+}
+.user-menu{
+    width: 250px;
+    height: 60px;
+    float: right;
+    margin-top: 10px;
+}
+.user-menu ul{
+    float: right;
+}
+.user-menu ul li{
+    list-style: none;
+    float: left;
+    height: 70px;
+    line-height: 70px;
+    width: 100px;
+    text-align: center;
+}
+.user-menu ul li a{
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+.user-menu button{
+    color: white !important;
+    height: 40px;
+    line-height: 30px;
+    background: #183257;
+}
+
+/* Carrossel de slides */
+.bx-wrapper .bx-controls-auto, .bx-wrapper .bx-pager{
+    bottom: 30px !important;
+}
+.slider-area img{
+    width: 100%;
+    height: 500px;
+    padding: 1%;
+}
+.slider-content{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 700px;
+    text-align: center;
+}
+.slider-name{
+    font-weight: bolder;
+    color: #1050AB;
+    font-size: 50px;
+    text-decoration: none;
+}
+.slider-description{
+    font-weight: bold;
+    color: #6A6767;
+    font-size: 20px;
+    text-decoration: none;
+}
+.slider-price{
+    font-weight: bolder;
+    color: #F01515;
+    font-size: 60px;
+    text-decoration: none;
+}
+.bx-wrapper .bx-next{
+    right: 40px;
+}
+.bx-wrapper .bx-prev{
+    left: 40px;
+}
+
+/* Categorias */
+.category-menu{
+    background-color: #E5E5E5 !important;
+    width: 100%;
+    height: 90px;
+    margin-top: 90px;
+    text-align: center;
+}
+.categorie-classes a{
+    font-weight: 500;
+    font-size: 30px;
+    text-decoration: none !important;
+    color: black;
+    line-height: 90px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+

@@ -1,0 +1,42 @@
+@media screen and (max-width: 500px){
+    .navigation-bar{
+        width: 500px;
+        height: 150px;
+    }
+    .logo img{
+        width: 130px;
+        margin-top: 25px;
+    }
+    .user-menu{
+        width: 200px;
+        height: 60px;
+        position: absolute;
+        right: 0;
+    }
+    .user-menu ul li{
+        width: 80px;
+        font-size: 12px;
+    }
+    .search-area{
+        width: 300px !important;
+        margin-left: 25px;
+        margin-top: 10px;
+    }
+    .search_box{
+        width: 300px !important;
+        height: 30px;
+    } 
+    .search_btn i{
+        width: 35px;
+        height: 30px;
+    }
+    .category-menu{
+        margin-top: 150px !important;
+        width: 500px !important;
+        height: 50px;
+    }
+    .categorie-classes a{
+        font-size: 12px;
+        margin-left: -10px;
+    }
+}

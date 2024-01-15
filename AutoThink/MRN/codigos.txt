@@ -1,0 +1,633 @@
+HTML:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Home MRN</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='MRN.css'>
+    <link rel="icon" href="logoMRN.png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <div class="center">
+            <div class="logo">
+                <img src="logoAzul.png" width="230px" height="100px">
+            </div>
+            <div class="menu">
+                <a href="#">
+                    Home
+                </a>
+                <a href="#">
+                    Sobre Nós
+                </a>
+                <a href="#">
+                    Nossos Produtos
+                </a>
+                <a href="#">
+                    Nossas Unidades
+                </a>
+                <a class="FC" href="#">
+                    Fale Conosco
+                </a>
+            </div><!--menu-->
+            <div class="menu-mobile">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div><!--center-->
+    </header>
+
+   
+
+    <section class="home">
+        <div class="grupo">
+        <p class="solucao">
+            Nós somos a solução que você precisa!
+        </p><br>
+        <p class="ideias">
+            Somos uma empresa especializada em desenvolvimento de websites com uma grande diversidade de ideias.
+        </p><br>
+        <p class="solucao">
+            Apoiamos pequenas ideias e as transformamos em grandes negócios!
+        </p><br>
+    </div>
+    </section>
+
+    <section class="sobre">
+        <p class="titulo">
+            Sobre Nós
+        </p><br>
+        <p class="nos">
+            Somos uma empresa que, inicialmente tínhamos como propósito ser uma Tese de Conclusão de Curso (TCC), mas nos tornamos uma empresa de tecnologia e inovação.<br><br>
+            Nossos objetivos são o desenvolvimento de apps para atender as suas necessidades e as de sua empresa e a melhora da experiência de seus clientes.<br><br>  
+            Respeitando as diferenças e nos pautando em valores éticos, trabalhamos com comprometimento e apresentamos qualidades como inovação, garra, criatividade e agilidade.
+        </p>
+
+        <div class="descricao">
+        <p class="missao">
+            Missão
+        </p>
+        <p class="descr">
+            Fazer parte da realização do sonho de ter a própria empresa. Ser parceiro na criação de sites inovadores e acessíveis que promovam uma boa relação entre os clientes e as empresas.
+        </p>
+        <p class="visao">
+            Visão
+        </p>
+        <p class="descrV">
+            Ser reconhecida como a melhor empresa de criação de sites, pela dedicação e inovação.
+        </p>
+        <p class="valores">
+            Valores
+        </p>
+        <p class="descrL">
+            Comprometimento, respeito, responsabilidade, diversidade, parceria, inovação e criatividade
+        </p>
+    </div>
+    </section>
+
+    <p class="linha"></p><!--linha-->
+
+    <section class="produtos">
+        <p class="titulo">
+            Nossos Produtos
+        </p>
+        <p class="descrP">
+            O nosso principal produto, o AutoThink possui o objetivo de facilitar o gerenciamento de venda de produtos nas lojas de autopeças.<br>
+            O software também busca fornecer aos nossos clientes as melhores soluções em autopeças e serviços automotivos, com qualidade, eficiência e atendimento excepcional, garantindo a satisfação e fidelidade dos mesmos.           
+        </p>
+        <img class="autoT" src="autothink.png">
+    </section>
+
+    <p class="linha"></p><!--linha-->
+
+    <p class="titulo">
+        Nossa Unidade
+    </p>
+
+    <section class="unidades">
+        
+        <p class="empresa">
+            Empresa MRN
+        </p>
+        <p class="endereco">
+            <strong>Endereço:</strong> Av. Santana, 1995 - Parque Ortolândia, Hortolândia - SP, 13184-210<br>
+            <strong>Horário:</strong> De Segunda a Sexta das 8h às 17:30h
+            Domingo das 7h às 14h<br>
+            <strong>Telefone:</strong> 5110-6110, digite 31    
+        </p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.873111662907!2d-47.23266902481605!3d-22.88114527927308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8bbec5dffa355%3A0x2189aae6d7d9bf9f!2sIATec%20-%20Instituto%20Adventista%20de%20Tecnologia!5e0!3m2!1spt-BR!2sbr!4v1684172196166!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <p class="linha"></p><!--linha-->
+
+    <section class="reporte">
+        <p class="titulo">
+            Fale Conosco
+        </p>
+        <p class="problema">
+            Contate-nos ou reporte algum problema:
+        </p>
+        
+        <form>
+            <ul class="form-style-1">
+                <li><label><span class="required"></span></label><input type="email" name="field1" class="field-divided" placeholder="Email" /></li>
+                <li>
+                    <label><span class="required"></span></label><input type="tel" name="field3" class="field-long" placeholder="Celular" />
+                </li>
+                <li>
+                    <label><span class="required"></span></label><input type="text" name="field4" class="field-select" placeholder="Nome:" />
+                </li>
+                <li>
+                    <label><span class="required"></span></label>
+                    <textarea name="field5" id="field5" class="field-long field-textarea" placeholder="Mensagem:"></textarea>
+                </li>
+                <li>
+                    <input type="submit" value="Enviar" />
+                </li>
+            </ul>
+            </form>
+    </section>
+
+    <p class="voltar">Voltar ao Início</p>
+    <footer><!--rodapé-->
+        <div class="texto coluna-esquerda">
+            <h2>Unidades</h2><br>
+            <p>Unidades</p><br>
+            <p>Sobre Nós</p>
+        </div>
+        <div class="imagem coluna-central">
+            <img src="logoAzul.png" alt="Imagem" width="180px" height="80px">
+        </div>
+        <div class="texto coluna-direita">
+            <h2>Contato</h2><br>
+            <p>(19) 98825-4565</p><br>
+            <p>autothink@gmail.com</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+
+CSS: 
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.center{
+    max-width: 100%;
+    margin: auto;
+    padding:0 2%;
+    display: flex;
+    flex-wrap: wrap; /*manipular mais livremente o flexbox sem ficar limitado com as dimensões*/
+}
+
+header{
+    background-color: #20406D;
+    border-bottom: 1px solid rgb(200, 200, 200); /*rgb quase branco*/
+    position: fixed;/*manter o cabeçalho fixo na pagina*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    height: 125px;
+}
+
+.logo{
+    float: left;
+    margin: 10px;
+    margin-left: 35px;
+}
+
+.menu{ /*aqui foi o que fez tudo se separar e ficar alinhado*/
+    width: 80%;
+    text-align: right;
+    overflow: hidden;
+    margin: auto;
+    padding: 25px 50px;
+}
+
+.menu a{
+    color: #FFFFFF;
+    font-size: 22px;
+    text-decoration: none;
+    margin: auto;
+    margin-right: 15px;
+    transition: 0.4s;
+}
+
+.menu .FC{
+    background-color: #FFFFFF;
+    display: inline-block; /*mantilar melhor as dimensões*/
+    padding: 8px 16px;
+    color: #20406D;
+    border-radius: 25px;
+}
+
+.menu .FC:hover{
+    background-color: #124265;
+    color: white;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+  }
+
+.grupo{
+    padding-top: 150px;
+}
+
+p{
+    text-decoration: none;
+    transition: 0.4s;
+    text-align: center;
+    font-family: 'Poppins', sans-serif; 
+
+}
+
+.solucao{
+    font-weight: bolder;
+    color: #FFFFFF;
+    text-shadow: 0 0 5px #20406D; 
+    font-size: 40px;
+    text-align: center;
+}
+
+
+.ideias{
+    font-size: 60px;
+    font-weight: bolder;
+    color: #FFFFFF;
+    text-shadow: 0 0 7px #20406D; 
+    width: 90%;
+    padding-left: 110px;
+}
+
+.home{
+    background-image: url('sites.jpg');
+    /*min-height: 500px; tirou depois e substituiu por um padding*/
+    padding: 70px 0;
+    background-position: center;
+    background-size: cover; /*pra ficar 100% responsivo*/
+    background-repeat: no-repeat;
+    opacity: 0.8;
+}
+
+.titulo{
+    font-weight: 900;
+    font-size: 70px;
+    padding: 50px;
+    color: #20406D;
+    text-decoration: underline #FED017; /*linha abaixo do texto*/
+    text-decoration-thickness: 3px; /*grossura da linha*/
+    text-underline-offset: 10px; /*distancia da linha até o texto*/
+}
+
+.nos{
+    font-size: 30px;
+    width: 80%;
+    text-align: justify;
+    overflow: hidden;
+    margin: auto;
+    font-weight: lighter;
+    padding-bottom: 50px;
+}
+
+.descricao{
+    width: 80%;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    margin: auto;
+
+}
+
+.missao{
+    font-size: 45px;
+    display: inline-block;
+    overflow: hidden;
+    margin: auto;
+    font-weight: bold;
+    background-color: #20406D;
+    padding: 52px 50px;
+    color: #FED017;
+    border-radius: 25px;
+}
+
+.descr{
+    font-size: 25px;
+    width: 80%;
+    text-align: justify;
+    overflow: hidden;
+    font-weight: bold;
+    background-color: #526B8E;
+    padding: 35px 80px;
+    color: #FFFFFF;
+    border-radius: 25px;
+    display: inline-block;
+    vertical-align: top;
+    height: 155px;
+}
+
+.visao{
+    font-size: 45px;
+    display: inline-block;
+    overflow: hidden;
+    margin: auto;
+    font-weight: bold;
+    background-color: #FED017;
+    padding: 52px 65px;
+    color: #183257;
+    border-radius: 25px;
+}
+
+.descrV{
+    font-size: 25px;
+    width: 80%;
+    text-align: justify;
+    overflow: hidden;
+    font-weight: bold;
+    background-color: #D4AF1B;
+    padding: 50px 80px;
+    color: #FFFFFF;
+    border-radius: 25px;
+    display: inline-block;
+    vertical-align: top;
+    height: 155px;
+}
+
+.valores{
+    font-size: 45px;
+    display: inline-block;
+    overflow: hidden;
+    margin: auto;
+    font-weight: bold;
+    background-color: #20406D;
+    padding: 52px 45px;
+    color: #FED017;
+    border-radius: 25px;
+}
+
+.descrL{
+    font-size: 25px;
+    width: 80%;
+    text-align: justify;
+    overflow: hidden;
+    font-weight: bold;
+    background-color: #526B8E;
+    padding: 50px 80px;
+    color: #FFFFFF;
+    border-radius: 25px;
+    display: inline-block;
+    vertical-align: top;
+    height: 155px;
+}
+
+.linha{
+    width: 95%;
+    height: 1;
+    border: 1px solid #6A6767;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.produtos{
+    padding: 20px;
+    width: 90%;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    margin: auto;
+}
+
+.descrP{
+    font-size: 30px;
+    display: inline-block;
+    margin: auto;
+    font-weight: lighter;
+    padding: 52px 50px;
+    color: #000;
+    background-color: #F7F6F6;
+    border-radius: 25px;
+    text-align: justify;
+    width: 70%;
+    overflow: hidden;
+}
+
+.autoT{
+    width: 310px;
+    height: 310px;
+    background-color: #D9D9D9;
+    border-radius: 25px;
+}
+
+.unidades{
+    width: 90%;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 50px;
+    background-color: #F7F6F6;
+    border-radius: 25px;
+    margin: auto;
+}
+
+
+.empresa{
+    font-weight: 900;
+    font-size: 35px;
+    padding: 50px;
+    color: #20406D;
+    padding: 52px 100px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.endereco{
+    font-size: 27px;
+    display: inline-block;
+    margin: auto;
+    margin-right: 20px;
+    font-weight: lighter;
+    color: #000;
+    text-align: justify;
+    max-width: 50%;
+    vertical-align: 280px;
+    line-height: 35px;
+}
+
+.problema{
+    font-size: 30px;
+    margin: auto;
+    margin-bottom: 50px;
+    font-weight: lighter;
+    color: #000;
+    text-align: center;
+    padding: 25px;
+    background-color: #D9D9D9;
+    border-radius: 25px;
+    width: 80%;
+}
+
+/*formulário*/
+
+.placeholder{
+    text-decoration: none;
+    transition: 0.4s;
+    justify-content: left;
+    font-family: 'Poppins', sans-serif;    
+    font-size: 30px;
+    color: #6A6767;
+    
+}
+
+.form-style-1 {
+	margin: auto;
+    width: 60%;
+	padding: 20px 12px 10px 20px;
+	font-size: 30px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    line-height: 50px;
+}
+.form-style-1 li {
+	padding: 0;
+	display: block;
+	list-style: none;
+	margin: 10px 0 0 0;
+}
+.form-style-1 label{
+	margin:0 0 3px 0;
+	padding:0px;
+	display:block;
+	font-weight: bold;
+}
+.form-style-1 input[type=text], 
+.form-style-1 input[type=date],
+.form-style-1 input[type=datetime],
+.form-style-1 input[type=tel],
+.form-style-1 input[type=search],
+.form-style-1 input[type=time],
+.form-style-1 input[type=url],
+.form-style-1 input[type=email],
+textarea, 
+select{
+	background-color: #F7F6F6;
+    border-radius: 20px;
+	border:1px solid #F7F6F6;
+	padding: 20px;
+	margin:auto;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;	
+}
+.form-style-1 input[type=text]:focus, 
+.form-style-1 input[type=date]:focus,
+.form-style-1 input[type=datetime]:focus,
+.form-style-1 input[type=tel]:focus,
+.form-style-1 input[type=search]:focus,
+.form-style-1 input[type=time]:focus,
+.form-style-1 input[type=url]:focus,
+.form-style-1 input[type=email]:focus,
+.form-style-1 textarea:focus, 
+.form-style-1 select:focus{
+	-moz-box-shadow: 0 0 8px #1B3C6A;
+	-webkit-box-shadow: 0 0 8px #1B3C6A;
+	box-shadow: 0 0 8px #1B3C6A;
+}
+.form-style-1 .field-divided{
+	width: 50%;
+}
+
+.form-style-1 .field-long{
+	width: 50%;
+}
+.form-style-1 .field-select{
+	width: 100%;
+}
+.form-style-1 .field-textarea{
+	height: 100px;
+    width: 100%;
+}
+
+/*botão enviar*/
+.form-style-1 input[type=submit], .form-style-1 input[type=button]{
+	background: #183257;
+	padding: 12px 20px 12px 20px;
+	border: none;
+    border-radius: 25px;
+	color: #fff;
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+    text-align: right;
+    margin-bottom: 50px;
+}
+.form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
+	background: #1B3C6A;
+	box-shadow:none;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+}
+.form-style-1 .required{ /*se algum campo não extiver preenchido*/
+	color:red;
+}
+
+.voltar{
+    background-color: #1B3C6A;
+    color: #FFFFFF;
+    font-size: 30px;
+    text-align: center;
+    line-height: 86px;
+}
+
+footer{
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    margin: auto;
+    padding: 50px;
+    background-color: rgba(27, 60, 106, 0.76);
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-gap: 20px;
+}
+
+.texto {
+    padding: 20px;
+    color: #fff;
+  }
+  
+  .coluna-esquerda {
+    grid-column: 1 / 2;
+  }
+  
+  .coluna-central {
+    grid-column: 2 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .coluna-direita {
+    grid-column: 3 / 4;
+  }
+
+
+
+
+
+
+
+
+
+
